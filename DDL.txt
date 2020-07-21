@@ -1,0 +1,133 @@
+CREATE TABLE alternativa (
+    id_alt           INTEGER NOT NULL,
+    descripcion      VARCHAR2(30),
+    valor_logico     CHAR(1),
+    valor_porc       INTEGER,
+    pregunta_id_pre  INTEGER NOT NULL
+);
+
+ALTER TABLE alternativa
+    ADD CHECK ( valor_logico IN ( 'F', 'V' ) );
+
+ALTER TABLE alternativa ADD CONSTRAINT alternativa_pk PRIMARY KEY ( id_alt );
+
+CREATE TABLE alumno (
+    id_alu    INTEGER NOT NULL,
+    nombre    VARCHAR2(15),
+    apellido  VARCHAR2(15),
+    edad      INTEGER,
+    rut       VARCHAR2(15)
+);
+
+ALTER TABLE alumno ADD CONSTRAINT alumno_pk PRIMARY KEY ( id_alu );
+
+CREATE TABLE autor (
+    id_aut           INTEGER NOT NULL,
+    nombre_completo  VARCHAR2(15)
+);
+
+ALTER TABLE autor ADD CONSTRAINT autor_pk PRIMARY KEY ( id_aut );
+
+CREATE TABLE curso (
+    id_cur       INTEGER NOT NULL,
+    descripcion  VARCHAR2(15)
+);
+
+ALTER TABLE curso ADD CONSTRAINT curso_pk PRIMARY KEY ( id_cur );
+
+CREATE TABLE evaluacion (
+    id_eva         INTEGER NOT NULL,
+    puntaje        NUMBER,
+    nota           NUMBER,
+    alumno_id_alu  INTEGER NOT NULL,
+    test_id_tes    INTEGER NOT NULL,
+    curso_id_cur   INTEGER NOT NULL
+);
+
+ALTER TABLE evaluacion
+    ADD CHECK ( nota BETWEEN 1.0 AND 7.0 );
+
+ALTER TABLE evaluacion ADD CONSTRAINT evaluacion_pk PRIMARY KEY ( id_eva );
+
+CREATE TABLE inscripcion (
+    alumno_id_alu  INTEGER NOT NULL,
+    curso_id_cur   INTEGER NOT NULL
+);
+
+ALTER TABLE inscripcion ADD CONSTRAINT inscripcion_pk PRIMARY KEY ( curso_id_cur,
+                                                                    alumno_id_alu );
+
+CREATE TABLE pregunta (
+    id_pre       INTEGER NOT NULL,
+    enunciado    VARCHAR2(30),
+    puntaje      NUMBER,
+    test_id_tes  INTEGER NOT NULL
+);
+
+ALTER TABLE pregunta ADD CONSTRAINT pregunta_pk PRIMARY KEY ( id_pre );
+
+CREATE TABLE programa (
+    id_pro       INTEGER NOT NULL,
+    descripcion  VARCHAR2(15)
+);
+
+ALTER TABLE programa ADD CONSTRAINT programa_pk PRIMARY KEY ( id_pro );
+
+CREATE TABLE test (
+    id_tes           INTEGER NOT NULL,
+    nombre           VARCHAR2(20),
+    descripcion      VARCHAR2(30),
+    fecha_creacion   DATE,
+    programa_id_pro  INTEGER NOT NULL,
+    unidad_id_uni    INTEGER NOT NULL,
+    autor_id_aut     INTEGER NOT NULL
+);
+
+ALTER TABLE test ADD CONSTRAINT test_pk PRIMARY KEY ( id_tes );
+
+CREATE TABLE unidad (
+    id_uni       INTEGER NOT NULL,
+    descripcion  VARCHAR2(15)
+);
+
+ALTER TABLE unidad ADD CONSTRAINT unidad_pk PRIMARY KEY ( id_uni );
+
+ALTER TABLE alternativa
+    ADD CONSTRAINT alternativa_pregunta_fk FOREIGN KEY ( pregunta_id_pre )
+        REFERENCES pregunta ( id_pre );
+
+ALTER TABLE evaluacion
+    ADD CONSTRAINT evaluacion_alumno_fk FOREIGN KEY ( alumno_id_alu )
+        REFERENCES alumno ( id_alu );
+
+ALTER TABLE evaluacion
+    ADD CONSTRAINT evaluacion_curso_fk FOREIGN KEY ( curso_id_cur )
+        REFERENCES curso ( id_cur );
+
+ALTER TABLE evaluacion
+    ADD CONSTRAINT evaluacion_test_fk FOREIGN KEY ( test_id_tes )
+        REFERENCES test ( id_tes );
+
+ALTER TABLE inscripcion
+    ADD CONSTRAINT inscripcion_alumno_fk FOREIGN KEY ( alumno_id_alu )
+        REFERENCES alumno ( id_alu );
+
+ALTER TABLE inscripcion
+    ADD CONSTRAINT inscripcion_curso_fk FOREIGN KEY ( curso_id_cur )
+        REFERENCES curso ( id_cur );
+
+ALTER TABLE pregunta
+    ADD CONSTRAINT pregunta_test_fk FOREIGN KEY ( test_id_tes )
+        REFERENCES test ( id_tes );
+
+ALTER TABLE test
+    ADD CONSTRAINT test_autor_fk FOREIGN KEY ( autor_id_aut )
+        REFERENCES autor ( id_aut );
+
+ALTER TABLE test
+    ADD CONSTRAINT test_programa_fk FOREIGN KEY ( programa_id_pro )
+        REFERENCES programa ( id_pro );
+
+ALTER TABLE test
+    ADD CONSTRAINT test_unidad_fk FOREIGN KEY ( unidad_id_uni )
+        REFERENCES unidad ( id_uni );
