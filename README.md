@@ -12,10 +12,10 @@ Se solicita que el desarrollo del ejercicio contenga los siguientes elementos:
 
 ### Modelo Lógico
 
-_A continucación se muestra el mapa lógico:_ 
-
+_A continucación se muestran los modelos lógicos:_ 
+### Barker:
 ![Modelo Lógico Barker](image/ModeloLogicoBarker.PNG)
-
+### Bachman:
 ![Modelo Lógico Bachman](image/ModeloLogicoBachman.PNG)
 
 
@@ -227,6 +227,35 @@ INSERT ALL
      
 SELECT * FROM dual;
 ```
+
+_Agregamos inscripciones de alumnos a cursos_
+
+```sql
+INSERT ALL
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (1,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (2,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (3,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (4,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (5,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (6,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (7,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (8,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (9,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (10,3)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (11,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (12,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (13,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (14,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (15,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (16,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (17,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (18,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (19,4)
+    INTO inscripcion (alumno_ID_alu,curso_id_cur) VALUES (20,4)
+    
+SELECT * FROM dual;
+```
+
 _Agregamos Autores de Test_
 
 ```sql
@@ -249,7 +278,7 @@ INSERT ALL
 SELECT * FROM dual
 
 ```
-_Agregamos Preguntas de selección multiple_
+_Agregamos preguntas de selección multiple_
 
 ```sql
 INSERT ALL
@@ -274,5 +303,13 @@ INSERT ALL
     
 SELECT * FROM dual;
 ```
+_Agregamos alternativas para respuestas_
 
+```sql
 
+```
+_Agregamos evaluaciones_
+
+```sql
+
+```
