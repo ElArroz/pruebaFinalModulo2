@@ -306,10 +306,83 @@ SELECT * FROM dual;
 _Agregamos alternativas para respuestas_
 
 ```sql
+INSERT ALL
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (1,'Un Sistema Operativo','F',0,1)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (2,'Un lenguaje de programacion','V',50,1)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (3,'Es una colección de objetos','V',50,1)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (4,'Un Sistema Operativo','F',0,1)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (5,'JAVA SCRIPT','F',0,2)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (6,'NOTEPAD','F',0,2)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (7,'ECLIPSE','V',50,2)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (8,'NETBEANS','V',50,2)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (9,'Con mismo nombre de la clase','V',30,3)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (10,'Teniendo o no parametros','V',30,3)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (11,'Puede ser sobrecargado','V',40,3)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (12,'Es un tipo de trabajador','F',50,3)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (13,'Tiene variables','V',33,4)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (14,'Se nombran en minusculas','F',0,4)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (15,'Tienen metodos','V',33,4)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (16,'Puede tener funciones','V',34,4)
+     INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (17,'Comprimir el codigo','F',33,5)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (18,'Proteger el código','V',0,5)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (19,'Mantener el código','V',33,5)
+    INTO alternativa (id_alt,descripcion,valor_logico,valor_porc,pregunta_id_pre) VALUES (20,'Controlar acceso al código','V',34,5)
 
+SELECT * FROM dual;
 ```
 _Agregamos evaluaciones_
 
+```sql
+INSERT ALL
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (1,100,7.0,1,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (2,50,3.5,2,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (3,60,4.2,3,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (4,45,2.4,4,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (5,90,6.7,5,2,3)
+     INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (6,100,7.0,6,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (7,50,3.5,7,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (8,100,7.0,8,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (9,45,2.4,9,2,3)
+    INTO evaluacion (id_eva,puntaje,nota,alumno_id_alu,test_id_tes,curso_id_cur) VALUES (10,90,6.7,10,2,3)
+  
+SELECT * FROM dual;
+```
+## Respuestas a preguntas (querys)
+
+###  **Pregunta 1:** Conocer el número de evaluaciones por curso:
+```sql
+
+```
+###  **Pregunta 2:** Conocer los cursos sin evaluaciones:
+```sql
+
+```
+###  **Pregunta 3:** Determinar las evaluaciones con deficiencia:
+_Una evaluación es deficiente:_
+* _a. Si no tiene preguntas._
+* _b. Si hay preguntas con 2 ó menos alternativas_
+* _c. Si todas las alternativas son correctas o si todas las alternativas son incorrectas._
+```sql
+
+```
+###  **Pregunta 4:**  Determinar cuántos alumnos hay en cada curso:
+```sql
+
+```
+###  **Pregunta 5:** Obtener el puntaje no normalizado de cada evaluación:
+_El puntaje no normalizado ha sido definido (requerimiento) como: P = buenas – (malas/4). Si un alumno no contesta en una pregunta exactamente lo mismo que se ha definido como correcto, la pregunta cuenta como mala a menos que el alumno haya omitido_
+```sql
+
+```
+###  **Pregunta 6:**  Obtener el puntaje normalizado, o sea, de 1,0 a 7,0:
+```sql
+
+```
+###  **Pregunta 7:** Nombre de estudiantes de un curso determinado que aprueban una evaluación determinada _(donde la nota de aprobación mínima es un 4,0):_
+```sql
+
+```
+###  **Pregunta 8:** Nota promedio de los estudiantes de un curso determinado, para una evaluación de terminada.:
 ```sql
 
 ```
